@@ -1,0 +1,124 @@
+Title of Project:
+Women Cloth Reviews Prediction with Multi Nominal Naïve Bayes
+
+Objective:
+To predict the sentiment of women’s clothing reviews
+(positive or negative) using a Multinomial Naïve Bayes classifier.
+
+Data Source:
+•The dataset contains reviews of women’s clothing items,
+including text reviews and sentiment labels.
+•Example source: [Kaggle Women Clothing Reviews Dataset]
+(https://www.kaggle.com/nicapotato/womens-clothing-e-commerce-reviews)
+
+Import Libraries:
+
+Python
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.model_selection import train_test_split
+from sklearn.naive_bayes import MultinomialNB
+from sklearn.metrics import classification_report, confusion_matrix
+
+Import Data:
+
+python
+# Load the dataset
+data = pd.read_csv('women_clothing_reviews.csv')
+
+
+Describe Data:
+
+python
+# Display basic information about the dataset
+print(data.info())
+
+# Display the first few rows of the dataset
+print(data.head())
+
+# Display the distribution of sentiment labels
+print(data['sentiment'].value_counts())
+
+
+Data Visualization:
+
+python
+# Visualization of the distribution of sentiment
+sns.countplot(x='sentiment', data=data)
+plt.title('Distribution of Sentiment Labels')
+plt.show()
+
+
+Data Preprocessing:
+
+python
+# Text cleaning and preprocessing (e.g., removing punctuation, converting to lowercase)
+data['review'] = data['review'].str.lower().str.replace('[^\w\s]', '')
+
+# Splitting data into features and target variable
+X = data['review']
+y = data['sentiment']
+
+# Converting text data into numerical features
+vectorizer = CountVectorizer()
+X_vectorized = vectorizer.fit_transform(X)
+```
+
+Define Target Variable (y) and Feature Variables (X):
+
+python
+# Target variable
+y = data['sentiment']
+
+# Feature variables
+X = X_vectorized
+
+Train Test Split:
+
+python
+# Splitting the dataset into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+
+Modeling:
+
+python
+# Initializing and training the Multinomial Naïve Bayes model
+model = MultinomialNB()
+model.fit(X_train, y_train)
+
+
+Model Evaluation:
+
+python
+# Making predictions on the test set
+y_pred = model.predict(X_test)
+
+# Evaluating the model
+print(confusion_matrix(y_test, y_pred))
+print(classification_report(y_test, y_pred))
+
+
+Prediction:
+
+python
+# Example prediction
+example_review = ["The dress is absolutely wonderful and fits perfectly!"]
+example_review_vectorized = vectorizer.transform(example_review)
+prediction = model.predict(example_review_vectorized)
+print("Prediction:", prediction)
+
+Explanation:
+
+In this project, we utilized a Multinomial Naïve Bayes 
+classifier to predict the sentiment of women’s clothing reviews.
+The process involved importing and preprocessing the data,
+converting text data into numerical features using CountVectorizer,
+and splitting the data into training and testing sets.
+The Multinomial Naïve Bayes model was then trained on the training set
+and evaluated on the test set. Finally, the model's performance was assessed
+using metrics such as confusion matrix and classification report, and predictions 
+were made on new review data.
