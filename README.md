@@ -45,3 +45,4 @@ I build scalable mobile & web products — from crowdsourced civic platforms to 
 ### 📫 Connect
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=linkedin&logoColor=white)](https://linkedin.com/in/bershay)
 [![Gmail](https://img.shields.io/badge/Gmail-D14836?style=flat&logo=gmail&logoColor=white)](mailto:bershayit@gmail.com)
+[![Resume](https://img.shields.io/badge/Resume-4285F4?style=flat&logo=googledrive&logoColor=white)](https://drive.google.com/drive/folders/1NOApCwztQB_-pqmySYqRE_LSUn70dTpU?usp=drive_link)
